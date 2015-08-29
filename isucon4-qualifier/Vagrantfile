@@ -78,12 +78,16 @@ Vagrant.configure(2) do |config|
     set -e
     yum install -y epel-release git
     yum install -y ansible
+
+    rm -rf ansible-isucon
     git clone https://github.com/matsuu/ansible-isucon.git
     (
       cd ansible-isucon/isucon4-qualifier
       PYTHONUNBUFFERED=1 ANSIBLE_FORCE_COLOR=true ansible-playbook playbook.yml -i local
     )
     rm -rf ansible-isucon
+
+    rm -rf ansible-isucon-pass
     git clone https://github.com/matsuu/ansible-isucon-pass.git
     (
       cd ansible-isucon-pass/isucon4-qualifier
